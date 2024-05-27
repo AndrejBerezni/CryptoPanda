@@ -1,9 +1,10 @@
-function App() {
+import Navbar from './components/Navbar'
+import Router from './router/Routes'
+export default function App() {
   return (
     <>
-      <h1>Crypto Panda</h1>
+      <Navbar />
+      <Router />
     </>
   )
 }
-
-export default App
