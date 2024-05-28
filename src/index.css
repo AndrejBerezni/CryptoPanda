@@ -6,6 +6,9 @@
   .page-padding {
     @apply px-4 md:px-16 lg:px-24 xl:px-48;
   }
+  .page-layout {
+    @apply flex flex-col items-center gap-8;
+  }
   .primary-btn {
     @apply bg-primary text-sm max-[320px]:text-xs md:text-base text-backgroundColor dark:text-backgroundColorDark shadow-md rounded-md px-1 md:px-4 py-1 md:py-2 uppercase hover:text-textColor dark:hover:text-textColorDark hover:bg-secondary duration-300 border-2 border-primary;
   }

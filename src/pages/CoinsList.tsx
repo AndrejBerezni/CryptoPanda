@@ -33,7 +33,7 @@ export default function CoinsListPage({
   })
 
   return (
-    <section className="page-padding flex flex-col items-center min-h-screen gap-8">
+    <section className="page-padding page-layout">
       <SearchCriteriaSelect setCriteria={setCriteria} criteria={criteria} />
       {/* Render list of coins */}
       <ul className="flex flex-col items-center justify-center flex-1 gap-3 w-full max-w-full">

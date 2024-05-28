@@ -26,3 +26,13 @@ export interface ICoinDetailed {
   roi: number | null
   last_updated: string
 }
+
+export interface ICoinBasicInfo {
+  id: string
+  name: string
+  api_symbol: string
+  symbol: string
+  market_cap_rank: number
+  thumb: string
+  large: string
+}
