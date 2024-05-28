@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState, useEffect } from 'react'
+import { createContext, useMemo, useState, useEffect, useCallback } from 'react'
 import { Currency } from '../compiler/types'
 
 interface ICurrencyContext {
@@ -19,25 +19,28 @@ function CurrencyContextProvider({ children }: { children: React.ReactNode }) {
   const [currencyIndex, setCurrencyIndex] = useState<number>(0)
   const currencies: Currency[] = useMemo(() => ['eur', 'usd', 'gbp', 'rub'], [])
 
-  const changeCurrency = (direction: 'right' | 'left') => {
-    if (direction === 'right') {
-      currencyIndex < currencies.length - 1
-        ? setCurrencyIndex((prev) => prev + 1)
-        : setCurrencyIndex(0)
-    } else if (direction === 'left') {
-      currencyIndex > 0
-        ? setCurrencyIndex((prev) => prev - 1)
-        : setCurrencyIndex(currencies.length - 1)
-    }
-  }
+  const changeCurrency = useCallback(
+    (direction: 'right' | 'left') => {
+      if (direction === 'right') {
+        currencyIndex < currencies.length - 1
+          ? setCurrencyIndex((prev) => prev + 1)
+          : setCurrencyIndex(0)
+      } else if (direction === 'left') {
+        currencyIndex > 0
+          ? setCurrencyIndex((prev) => prev - 1)
+          : setCurrencyIndex(currencies.length - 1)
+      }
+    },
+    [currencies.length, currencyIndex]
+  )
 
   useEffect(() => {
     setCurrency(currencies[currencyIndex])
-  }, [currencyIndex])
+  }, [currencyIndex, currencies])
 
   const contextValue = useMemo(
     () => ({ currency, changeCurrency }),
-    [currency, currencyIndex]
+    [currency, changeCurrency]
   )
 
   return (

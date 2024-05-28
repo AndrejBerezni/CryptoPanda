@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <footer className="py-4 w-full flex justify-center items-center gap-2 text-textColorSecondary font-source">
+    <footer className="py-4 mt-6 w-full flex justify-center items-center gap-2 text-textColorSecondary font-source">
       <p>Powered by</p>
       <img
         src="/coingecko.png"
