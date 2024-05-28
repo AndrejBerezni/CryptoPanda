@@ -1,27 +1,24 @@
+import { useContext, useState } from 'react'
 import { ImStarFull, ImStarEmpty } from 'react-icons/im'
 import { MdOpenInNew } from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import {
-  addCoinToFavorites,
-  removeCoinFromFavorites,
-} from '../../utilities/handleFavorites'
+import { FavoritesContext } from '../../context/FavoritesContext'
 
-export default function CoinCardButtons({
-  coinId,
-  isFavorite,
-  changeFavorites,
-}: {
-  coinId: string
-  isFavorite: boolean
-  changeFavorites: () => void
-}) {
+export default function CoinCardButtons({ coinId }: { coinId: string }) {
+  const { favorites, removeFavorite, addFavorite } =
+    useContext(FavoritesContext)
+  const [isFavorite, setIsFavorite] = useState<boolean>(
+    favorites.includes(coinId)
+  )
+
   const handleFavoriteClick = () => {
-    if (isFavorite) {
-      removeCoinFromFavorites(coinId)
+    if (favorites.includes(coinId)) {
+      setIsFavorite(false)
+      removeFavorite(coinId)
     } else {
-      addCoinToFavorites(coinId)
+      setIsFavorite(true)
+      addFavorite(coinId)
     }
-    changeFavorites()
   }
   return (
     <menu className="flex gap-4 items-center text-xl ml-2 flex-row sm:flex-col lg:flex-row relative text-primary dark:text-secondary">

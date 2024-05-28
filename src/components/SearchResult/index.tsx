@@ -12,11 +12,7 @@ export default function SearchResult({ coin }: { coin: ICoinBasicInfo }) {
         </h3>
       </div>
 
-      <CoinCardButtons
-        coinId={coin.id}
-        isFavorite={true}
-        changeFavorites={() => console.log('dummy')}
-      />
+      <CoinCardButtons coinId={coin.id} />
     </li>
   )
 }

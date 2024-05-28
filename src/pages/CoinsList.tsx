@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { ImStarFull } from 'react-icons/im'
 import { useSearchParams } from 'react-router-dom'
 import { CoinListCriteria } from '../compiler/types'
@@ -6,9 +6,9 @@ import CoinCard from '../components/CoinCard'
 import Pagination from '../components/Pagination'
 import SearchCriteriaSelect from '../components/SearchCriteriaSelect'
 import Spinner from '../components/Spinner'
+import { FavoritesContext } from '../context/FavoritesContext'
 import useFetchCoins from '../hooks/useFetchCoins'
 import calculateListPosition from '../utilities/calculateListPosition'
-import { getFavorites } from '../utilities/handleFavorites'
 
 export default function CoinsListPage({
   isFavoritesPage,
@@ -17,20 +17,12 @@ export default function CoinsListPage({
 }) {
   const [criteria, setCriteria] = useState<CoinListCriteria>('market_cap')
   const [searchParams, setSearchParams] = useSearchParams()
-
-  //keeping copy of favorites in component state to have changes to favorites displayed on coin cards
-  const [favorites, setFavorites] = useState<string>('')
-  const [favoritesChanged, setFavoritesChanged] = useState<boolean>(false)
-  useEffect(() => {
-    const favoritesString = getFavorites()
-    setFavorites(favoritesString)
-  }, [favoritesChanged])
-
-  const { coins, isLoading } = useFetchCoins({
+  const { coins, isLoading, error } = useFetchCoins({
     isFavoritesPage,
     criteria,
     searchParams,
   })
+  const { favorites } = useContext(FavoritesContext)
 
   return (
     <section className="page-padding page-layout">
@@ -39,6 +31,8 @@ export default function CoinsListPage({
       <ul className="flex flex-col items-center justify-center flex-1 gap-3 w-full max-w-full">
         {isLoading ? (
           <Spinner />
+        ) : error ? (
+          <p>{error}</p>
         ) : (
           coins.map((coin, index) => (
             <CoinCard
@@ -48,14 +42,12 @@ export default function CoinsListPage({
                 Number(searchParams.get('page')),
                 index
               )}
-              isFavorite={favorites.includes(coin.id)}
-              changeFavorites={() => setFavoritesChanged((prev) => !prev)}
             />
           ))
         )}
 
         {/* If there are not favorites, display message and instructions how to add coins to favorites: */}
-        {isFavoritesPage && coins.length === 0 && (
+        {isFavoritesPage && coins.length === 0 && !error && (
           <div className="text-center">
             <p>You currently don't have any coins added to Favorites page.</p>
             <p>
@@ -69,11 +61,11 @@ export default function CoinsListPage({
 
       {/* For Favorites page, we calculate number of pages. For top coins, it is always 5, for top 50 coins: */}
       {isFavoritesPage ? (
-        coins.length > 10 ? (
+        favorites.length > 10 ? (
           <Pagination
             setPage={(page) => setSearchParams({ page: page.toString() })}
             currentPage={Number(searchParams.get('page')) ?? 1}
-            numberOfPages={Math.floor(coins.length / 10) + 1}
+            numberOfPages={Math.ceil(favorites.length / 10)}
           />
         ) : null
       ) : (

@@ -4,6 +4,7 @@ import { ICoinDetailed } from '../compiler/interfaces'
 import { CoinListCriteria } from '../compiler/types'
 import { CurrencyContext } from '../context/CurrencyContext'
 import { getFavorites } from '../utilities/handleFavorites'
+import standardizeErrorMessage from '../utilities/standardizeAndThrowError'
 
 export default function useFetchCoins({
   isFavoritesPage,
@@ -17,10 +18,12 @@ export default function useFetchCoins({
   const [coins, setCoins] = useState<ICoinDetailed[]>([])
   const { currency } = useContext(CurrencyContext)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
 
   useEffect(() => {
     const fetchCoinsList = async () => {
       try {
+        setError('')
         setIsLoading(true)
         const page = Number(searchParams.get('page')) ?? 1
         let coins
@@ -42,7 +45,8 @@ export default function useFetchCoins({
         }
         setIsLoading(false)
       } catch (err) {
-        console.log(err) //update later
+        const message = standardizeErrorMessage(err)
+        setError(message)
         setIsLoading(false)
       }
     }
@@ -55,5 +59,5 @@ export default function useFetchCoins({
     return () => clearInterval(fetchInterval) // clean up
   }, [criteria, searchParams, currency, isFavoritesPage])
 
-  return { coins, isLoading }
+  return { coins, isLoading, error }
 }
