@@ -5,6 +5,7 @@ import { CoinListCriteria } from '../compiler/types'
 import CoinCard from '../components/CoinCard'
 import Pagination from '../components/Pagination'
 import SearchCriteriaSelect from '../components/SearchCriteriaSelect'
+import Spinner from '../components/Spinner'
 import useFetchCoins from '../hooks/useFetchCoins'
 import calculateListPosition from '../utilities/calculateListPosition'
 import { getFavorites } from '../utilities/handleFavorites'
@@ -16,9 +17,10 @@ export default function CoinsListPage({
 }) {
   const [criteria, setCriteria] = useState<CoinListCriteria>('market_cap')
   const [searchParams, setSearchParams] = useSearchParams()
+
+  //keeping copy of favorites in component state to have changes to favorites displayed on coin cards
   const [favorites, setFavorites] = useState<string>('')
   const [favoritesChanged, setFavoritesChanged] = useState<boolean>(false)
-
   useEffect(() => {
     const favoritesString = getFavorites()
     setFavorites(favoritesString)
@@ -33,23 +35,24 @@ export default function CoinsListPage({
   return (
     <section className="page-padding flex flex-col items-center min-h-screen gap-8">
       <SearchCriteriaSelect setCriteria={setCriteria} criteria={criteria} />
-
       {/* Render list of coins */}
-      <ul className="flex flex-col flex-1 gap-3 w-full max-w-full">
-        {isLoading
-          ? 'Loading...'
-          : coins.map((coin, index) => (
-              <CoinCard
-                coin={coin}
-                key={`${coin.id}-coin-card`}
-                position={calculateListPosition(
-                  Number(searchParams.get('page')),
-                  index
-                )}
-                isFavorite={favorites.includes(coin.id)}
-                changeFavorites={() => setFavoritesChanged((prev) => !prev)}
-              />
-            ))}
+      <ul className="flex flex-col items-center justify-center flex-1 gap-3 w-full max-w-full">
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          coins.map((coin, index) => (
+            <CoinCard
+              coin={coin}
+              key={`${coin.id}-coin-card`}
+              position={calculateListPosition(
+                Number(searchParams.get('page')),
+                index
+              )}
+              isFavorite={favorites.includes(coin.id)}
+              changeFavorites={() => setFavoritesChanged((prev) => !prev)}
+            />
+          ))
+        )}
 
         {/* If there are not favorites, display message and instructions how to add coins to favorites: */}
         {isFavoritesPage && coins.length === 0 && (

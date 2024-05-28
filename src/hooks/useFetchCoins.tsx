@@ -54,5 +54,6 @@ export default function useFetchCoins({
 
     return () => clearInterval(fetchInterval) // clean up
   }, [criteria, searchParams, currency, isFavoritesPage])
+
   return { coins, isLoading }
 }
