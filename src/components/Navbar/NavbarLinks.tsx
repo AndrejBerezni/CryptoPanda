@@ -1,32 +1,41 @@
-import { ImHome, ImStarFull } from 'react-icons/im'
-import { Link } from 'react-router-dom'
+import clsx from 'clsx'
+import { ImTrophy, ImStarFull, ImSearch } from 'react-icons/im'
+import { Link, useLocation } from 'react-router-dom'
 
 const links = [
   {
-    text: 'Home',
+    text: 'Top Coins',
     url: '/',
-    icon: <ImHome className="md:hidden hover:scale-110 duration-200" />,
+    icon: <ImTrophy className="hidden md:block" />,
+  },
+  {
+    text: 'Explore',
+    url: '/search',
+    icon: <ImSearch className="hidden md:block" />,
   },
   {
     text: 'Favorites',
-    url: '/',
-    icon: <ImStarFull className="md:hidden hover:scale-110 duration-200" />,
+    url: '/favorites',
+    icon: <ImStarFull className="hidden md:block" />,
   },
 ]
 
 export default function NavbarLinks() {
+  const location = useLocation()
   return (
     <ul className="flex gap-4 md:gap-8 md:mr-6">
       {links.map((link) => (
         <Link
           to={link.url}
           key={`${link.text}-nav-link`}
-          className="hover:text-secondary group relative flex items-center flex-col"
+          className={clsx('flex items-center gap-2 text-center', {
+            'primary-btn hover:bg-primary hover:text-backgroundColor dark:hover:text-backgroundColorDark hover:cursor-default':
+              location.pathname === link.url,
+            'secondary-btn': location.pathname !== link.url,
+          })}
         >
           {link.icon}
-          <p className="hidden md:block duration-200 text-lg hover:-translate-y-[2px] ">
-            {link.text}
-          </p>
+          {link.text}
         </Link>
       ))}
     </ul>

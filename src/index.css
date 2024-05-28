@@ -6,4 +6,10 @@
   .page-padding {
     @apply px-4 md:px-16 lg:px-24 xl:px-48;
   }
+  .primary-btn {
+    @apply bg-primary text-sm max-[320px]:text-xs md:text-base text-backgroundColor dark:text-backgroundColorDark shadow-md rounded-md px-1 md:px-4 py-1 md:py-2 uppercase hover:text-textColor dark:hover:text-textColorDark hover:bg-secondary duration-300 border-2 border-primary;
+  }
+  .secondary-btn {
+    @apply bg-secondary text-sm max-[320px]:text-xs md:text-base border-2 shadow-md border-secondary rounded-md px-1 md:px-4 py-1 md:py-2 uppercase hover:text-backgroundColor dark:hover:text-backgroundColorDark hover:border-primary hover:bg-primary  duration-300;
+  }
 }
