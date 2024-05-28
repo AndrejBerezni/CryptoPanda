@@ -1,13 +1,6 @@
 import CoinDetailsPage from './CoinDetails'
+import CoinsListPage from './CoinsList'
 import ExplorePage from './Explore'
-import FavoritesPage from './Favorites'
 import NotFoundPage from './NotFound'
-import TopCoinsPage from './TopCoins'
 
-export {
-  TopCoinsPage,
-  CoinDetailsPage,
-  FavoritesPage,
-  NotFoundPage,
-  ExplorePage,
-}
+export { CoinsListPage, CoinDetailsPage, NotFoundPage, ExplorePage }
