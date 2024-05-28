@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ImStarFull } from 'react-icons/im'
 import { useSearchParams } from 'react-router-dom'
 import { CoinListCriteria } from '../compiler/types'
 import CoinCard from '../components/CoinCard'
@@ -37,12 +38,32 @@ export default function CoinsListPage({
                 )}
               />
             ))}
+        {isFavoritesPage && coins.length === 0 && (
+          <div className="text-center">
+            <p>You currently don't have any coins added to Favorites page.</p>
+            <p>
+              Add coins by clicking{' '}
+              <ImStarFull className="inline text-accent mx-1" /> on coin cards
+              when searching for coins or viewing them on home page.
+            </p>
+          </div>
+        )}
       </ul>
-      <Pagination
-        setPage={(page) => setSearchParams({ page: page.toString() })}
-        currentPage={Number(searchParams.get('page')) ?? 1}
-        numberOfPages={5}
-      />
+      {isFavoritesPage ? (
+        coins.length > 10 ? (
+          <Pagination
+            setPage={(page) => setSearchParams({ page: page.toString() })}
+            currentPage={Number(searchParams.get('page')) ?? 1}
+            numberOfPages={Math.floor(coins.length / 10) + 1}
+          />
+        ) : null
+      ) : (
+        <Pagination
+          setPage={(page) => setSearchParams({ page: page.toString() })}
+          currentPage={Number(searchParams.get('page')) ?? 1}
+          numberOfPages={5}
+        />
+      )}
     </section>
   )
 }
