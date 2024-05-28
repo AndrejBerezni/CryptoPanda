@@ -13,7 +13,7 @@ export default function CoinCardTitle({
         {position}
         <span className="hidden sm:block">.</span>
       </p>
-      <img src={coin.image} className="h-[40px] w-[40px]" />
+      <img src={coin.image} alt={coin.name} className="h-[40px] w-[40px]" />
       <h2 className="text-accent dark:text-secondary font-bold sm:w-1/4 text-center sm:text-start">
         {coin.symbol.toUpperCase()} - {coin.name}
       </h2>

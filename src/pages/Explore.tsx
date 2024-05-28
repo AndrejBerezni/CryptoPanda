@@ -1,4 +1,5 @@
 import SearchBar from '../components/SearchBar'
+import SearchResult from '../components/SearchResult'
 import Spinner from '../components/Spinner'
 import useSearch from '../hooks/useSearch'
 
@@ -11,9 +12,9 @@ export default function ExplorePage() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <ul>
+        <ul className="flex w-full gap-6 justofy-center sm:justify-around md:justify-between flex-wrap">
           {results.map((result) => (
-            <p key={`${result.id}-search-result`}>{result.name}</p>
+            <SearchResult key={`${result.id}-search-result`} coin={result} />
           ))}
         </ul>
       )}
