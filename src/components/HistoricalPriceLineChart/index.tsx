@@ -40,7 +40,9 @@ export default function HistoricalPriceLineChart({
     datasets: [
       {
         label: coin,
-        data: prices.map((price) => price[1]),
+        data: prices
+          .filter((_, index) => index % 5 === 0)
+          .map((price) => price[1]),
         fill: false,
         borderColor: '#90CAF9',
         tension: 0.3,

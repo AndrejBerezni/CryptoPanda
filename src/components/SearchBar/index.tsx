@@ -5,22 +5,17 @@ import { IoIosCloseCircle } from 'react-icons/io'
 export default function SearchBar({
   input,
   setInput,
-  search,
 }: Readonly<{
   input: string
   setInput: (searchInput: string) => void
-  search: () => void
 }>) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchInput = event.target.value
     setInput(searchInput)
-    if (searchInput.length > 1) {
-      search()
-    }
   }
 
   return (
-    <article className="relative">
+    <article className="relative w-full sm:w-auto">
       <input
         type="text"
         className="shadow-md w-full rounded-md md:min-w-[400px] px-4 py-2 bg-white dark:bg-black border-secondary border-2  outline-none focus:border-primary focus:ring-none duration-200"

@@ -41,7 +41,7 @@ export default function useFetchCoinData(coinId: string) {
 
     const delayedFetch = async () => {
       setIsLoading(true)
-      await delay(2000)
+      await delay(7000) //this huge delay is set to avoid getting 429 error with free api
       fetchCoinData()
     }
 

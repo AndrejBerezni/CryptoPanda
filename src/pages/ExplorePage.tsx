@@ -4,8 +4,7 @@ import Spinner from '../components/Spinner'
 import useSearch from '../hooks/useSearch'
 
 export default function ExplorePage() {
-  const { input, setInput, debouncedSearch, results, isLoading, error } =
-    useSearch()
+  const { input, setInput, results, isLoading, error } = useSearch()
 
   let content
 
@@ -25,7 +24,7 @@ export default function ExplorePage() {
 
   return (
     <section className="page-padding page-layout">
-      <SearchBar input={input} setInput={setInput} search={debouncedSearch} />
+      <SearchBar input={input} setInput={setInput} />
       {content}
     </section>
   )

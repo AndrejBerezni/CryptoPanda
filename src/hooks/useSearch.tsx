@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { debounce } from 'lodash'
 
@@ -12,23 +12,33 @@ export default function useSearch() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
 
-  const debouncedSearch = debounce(async () => {
-    try {
-      setError('')
-      setIsLoading(true)
-      const newResults = await searchCoins(input)
-      if (!newResults) {
-        setResults([])
-      } else {
-        setResults(newResults)
+  const debouncedSearch = useRef(
+    debounce(async (searchInput: string) => {
+      try {
+        setError('')
+        setIsLoading(true)
+        const newResults = await searchCoins(searchInput)
+        if (!newResults) {
+          setResults([])
+        } else {
+          setResults(newResults)
+        }
+        setIsLoading(false)
+      } catch (err) {
+        const message = standardizeErrorMessage(err)
+        setError(message)
+        setIsLoading(false)
       }
-      setIsLoading(false)
-    } catch (err) {
-      const message = standardizeErrorMessage(err)
-      setError(message)
-      setIsLoading(false)
-    }
-  }, 1000)
+    }, 1000)
+  )
+  //debouncedSearch needed to be dependency of the useEffect above, so I needed to wrap it in useCallback not to recreate on every render
+  // However, debounce returns a new debounced version of the provided function every time it is called
 
-  return { input, setInput, debouncedSearch, results, isLoading, error }
+  useEffect(() => {
+    if (input.length > 1) {
+      debouncedSearch.current(input)
+    }
+  }, [input])
+
+  return { input, setInput, results, isLoading, error }
 }

@@ -17,7 +17,7 @@ export default function PaginationButton({
           setPage(page + 1)
         }}
         className={clsx('text-lg md:text-xl font-bold', {
-          'text-accent scale-110 underline':
+          'text-accent scale-125 underline':
             currentPage === page + 1 || (page + 1 === 1 && currentPage === 0),
           ' hover:scale-110 hover:text-accent duration-200':
             currentPage !== page + 1,
