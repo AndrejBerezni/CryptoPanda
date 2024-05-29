@@ -4,7 +4,7 @@ import standardizeErrorMessage from '../utilities/standardizeAndThrowError'
 const fetchCoinHistoricalData = async (
   coinId: string,
   currency: Currency
-): Promise<number[][] | undefined> => {
+): Promise<[number, number][] | undefined> => {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_COINGECKO_BASE_URL}coins/${coinId}/market_chart?vs_currency=${currency}&days=90&interval=daily&precision=2`,

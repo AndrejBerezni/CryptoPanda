@@ -34,7 +34,9 @@ export default function HistoricalPriceLineChart({
   const { currency } = useContext(CurrencyContext)
 
   const data = {
-    labels: prices.map((price) => new Date(price[0]).toLocaleDateString()),
+    labels: prices
+      .filter((_, index) => index % 5 === 0)
+      .map((price) => new Date(price[0]).toLocaleDateString()),
     datasets: [
       {
         label: coin,
@@ -48,7 +50,6 @@ export default function HistoricalPriceLineChart({
 
   const options = {
     responsive: true,
-    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top' as const,
@@ -65,7 +66,7 @@ export default function HistoricalPriceLineChart({
     <Line
       data={data}
       options={options}
-      className="rounded-md border-secondary border-[1px] bg-black p-1 shadow-md dark:shadow-[0px_0px_4px_#90CAF9]"
+      className="rounded-md border-secondary border-[1px] bg-white dark:bg-black p-1 shadow-md dark:shadow-[0px_0px_4px_#90CAF9]"
     />
   )
 }
