@@ -4,7 +4,7 @@ const standardizeErrorMessage = (err: any): string => {
     message = err.message
     if (message === 'Failed to fetch') {
       return message.concat(
-        ' data due to API limitations - please wait and try again later.'
+        ' data due to API limitations - please wait at least 60 seconds and try again later.'
       )
     }
   } else {

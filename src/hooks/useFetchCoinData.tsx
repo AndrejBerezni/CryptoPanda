@@ -6,6 +6,10 @@ import { ICoinDetailed } from '../compiler/interfaces'
 import { CurrencyContext } from '../context/CurrencyContext'
 import standardizeErrorMessage from '../utilities/standardizeAndThrowError'
 
+//delaying api calls in the hook below, because of the API limitations - if we have 4 calls one after another in small timeframe,
+//we will almost always get 429 error
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
 export default function useFetchCoinData(coinId: string) {
   const [coin, setCoin] = useState<ICoinDetailed | null>(null)
   const [results, setResults] = useState<[number, number][]>([])
@@ -19,6 +23,7 @@ export default function useFetchCoinData(coinId: string) {
         setError('')
         setIsLoading(true)
         const newResults = await fetchCoinHistoricalData(coinId, currency)
+        await delay(2000)
         const newCoin = await fetchCoins(currency, 'market_cap', 1, coinId)
         if (!newResults || !newCoin) {
           throw new Error(
@@ -35,7 +40,12 @@ export default function useFetchCoinData(coinId: string) {
       }
     }
 
-    fetchCoinData()
+    const delayedFetch = async () => {
+      await delay(1000)
+      fetchCoinData()
+    }
+
+    delayedFetch()
   }, [coinId, currency])
 
   return { results, coin, isLoading, error }

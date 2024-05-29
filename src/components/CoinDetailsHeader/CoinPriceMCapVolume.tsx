@@ -40,7 +40,7 @@ export default function CoinPriceMCapVolume({
   return (
     <ul className="flex gap-4 flex-col">
       {listItems.map((item) => (
-        <li className="w-full">
+        <li key={`${item.title}-coin-header-info`} className="w-full">
           <p className="flex gap-8 justify-between items-center max-[320px]:text-xs font-semibold tracking-wide font-source">
             {item.title}:
             <span className="font-extrabold text-primary dark:text-secondary max-[320px]:text-xs text-sm  font-mont">

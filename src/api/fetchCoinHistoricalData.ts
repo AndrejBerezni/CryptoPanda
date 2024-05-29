@@ -16,9 +16,9 @@ const fetchCoinHistoricalData = async (
       }
     )
 
-    if (response.status === 429) {
+    if (response.status === 404) {
       throw new Error(
-        'API calls per minute exceeded - please wait and try again later.'
+        `Coin with id:${coinId} not found - try to search for coins on Explore page`
       )
     }
 

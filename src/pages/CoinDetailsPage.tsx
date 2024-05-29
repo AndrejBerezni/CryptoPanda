@@ -1,10 +1,13 @@
+import { useParams } from 'react-router-dom'
+
 import CoinDetailsHeader from '../components/CoinDetailsHeader'
 import HistoricalPriceLineChart from '../components/HistoricalPriceLineChart'
 import Spinner from '../components/Spinner'
 import useFetchCoinData from '../hooks/useFetchCoinData'
 
 export default function CoinDetailsPage() {
-  const { coin, results, isLoading, error } = useFetchCoinData('bitcoin')
+  const { id } = useParams()
+  const { coin, results, isLoading, error } = useFetchCoinData(id as string)
 
   let content
 

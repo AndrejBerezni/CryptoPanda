@@ -27,10 +27,10 @@ ChartJS.register(
 export default function HistoricalPriceLineChart({
   prices,
   coin,
-}: {
+}: Readonly<{
   prices: [number, number][]
   coin: string
-}) {
+}>) {
   const { currency } = useContext(CurrencyContext)
 
   const data = {
