@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react'
+
 import fetchCoins from '../api/fetchCoins'
 import { ICoinDetailed } from '../compiler/interfaces'
 import { CoinListCriteria } from '../compiler/types'
@@ -25,7 +26,7 @@ export default function useFetchCoins({
       try {
         setError('')
         setIsLoading(true)
-        const page = Number(searchParams.get('page')) ?? 1
+        const page = Number(searchParams.get('page'))
         let coins
 
         if (isFavoritesPage) {

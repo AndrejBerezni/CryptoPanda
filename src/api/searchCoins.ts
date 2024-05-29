@@ -5,6 +5,7 @@ const searchCoins = async (
   searchTerm: string
 ): Promise<ICoinBasicInfo[] | undefined> => {
   try {
+    console.log('searching')
     const response = await fetch(
       `${import.meta.env.VITE_COINGECKO_BASE_URL}search?query=${searchTerm}`,
       {

@@ -3,7 +3,7 @@ const standardizeErrorMessage = (err: any): string => {
   if (err instanceof Error) {
     message = err.message
     if (message === 'Failed to fetch') {
-      return 'API calls per minute exceeded - please wait and try again later.'
+      return message.concat(' - please wait and try again later.')
     }
   } else {
     message = 'Something went wrong, please refresh the page and try again.'

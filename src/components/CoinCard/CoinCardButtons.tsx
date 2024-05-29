@@ -1,7 +1,9 @@
 import { useContext, useState } from 'react'
+
 import { ImStarFull, ImStarEmpty } from 'react-icons/im'
 import { MdOpenInNew } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+
 import { FavoritesContext } from '../../context/FavoritesContext'
 
 export default function CoinCardButtons({ coinId }: { coinId: string }) {

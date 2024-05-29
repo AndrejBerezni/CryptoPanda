@@ -7,6 +7,7 @@ export default function Footer() {
       <img
         src="/coingecko.png"
         className="w-[20px] h-[20px] md:w-[40px] md:h-[40px]"
+        alt="coingecko logo"
       />
       <Link to="https://www.coingecko.com/" className="hover:text-primary">
         Coingecko

@@ -1,6 +1,6 @@
-import CoinDetailsPage from './CoinDetails'
-import CoinsListPage from './CoinsList'
-import ExplorePage from './Explore'
-import NotFoundPage from './NotFound'
+import CoinDetailsPage from './CoinDetailsPage'
+import CoinListPage from './CoinListPage'
+import ExplorePage from './ExplorePage'
+import NotFoundPage from './NotFoundPage'
 
-export { CoinsListPage, CoinDetailsPage, NotFoundPage, ExplorePage }
+export { CoinListPage, CoinDetailsPage, NotFoundPage, ExplorePage }

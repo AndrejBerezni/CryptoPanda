@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react'
+
 import { IoIosCloseCircle } from 'react-icons/io'
 
 export default function SearchBar({

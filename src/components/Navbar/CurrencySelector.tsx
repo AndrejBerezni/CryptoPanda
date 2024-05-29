@@ -1,5 +1,7 @@
 import { useContext } from 'react'
+
 import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io'
+
 import { CurrencyContext } from '../../context/CurrencyContext'
 
 export default function CurrencySelector() {

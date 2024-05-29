@@ -1,4 +1,5 @@
 import { createContext, useMemo, useState, useEffect, useCallback } from 'react'
+
 import { Currency } from '../compiler/types'
 
 interface ICurrencyContext {
@@ -10,7 +11,6 @@ const CurrencyContext = createContext<ICurrencyContext>({
   currency: 'eur',
   changeCurrency: (direction: 'right' | 'left') => {
     console.log(direction)
-    return
   }, // dummy function that will be overwritten by provider
 })
 

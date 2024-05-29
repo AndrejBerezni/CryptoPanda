@@ -1,5 +1,7 @@
 import { useContext } from 'react'
+
 import clsx from 'clsx'
+
 import { ICoinDetailed } from '../../compiler/interfaces'
 import { CurrencyContext } from '../../context/CurrencyContext'
 

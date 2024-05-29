@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+
 import { CoinListCriteria } from '../../compiler/types'
 
 const criteriaList: CoinListCriteria[] = ['market_cap', 'volume']

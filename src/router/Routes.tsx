@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
+
 import {
-  CoinsListPage,
+  CoinListPage,
   CoinDetailsPage,
   ExplorePage,
   NotFoundPage,
@@ -9,11 +10,11 @@ import {
 export default function Router() {
   return (
     <Routes>
-      <Route path="/" element={<CoinsListPage isFavoritesPage={false} />} />
+      <Route path="/" element={<CoinListPage isFavoritesPage={false} />} />
       <Route path="/search" element={<ExplorePage />} />
       <Route
         path="/favorites"
-        element={<CoinsListPage isFavoritesPage={true} />}
+        element={<CoinListPage isFavoritesPage={true} />}
       />
       <Route path="/coin/:id" element={<CoinDetailsPage />} />
       <Route path="*" element={<NotFoundPage />} />

@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useMemo, useCallback } from 'react'
+
 import {
   getFavorites,
   addCoinToFavorites,
@@ -18,11 +19,9 @@ const FavoritesContext = createContext<IFavoritesContext>({
   favorites: [],
   removeFavorite: (coinId: string) => {
     console.log(coinId)
-    return
   },
   addFavorite: (coinId: string) => {
     console.log(coinId)
-    return
   }, // removeFavorite and addFavorite here are dummy functions that will be overwritten in provider below
 })
 

@@ -1,5 +1,7 @@
 import { useState } from 'react'
+
 import { debounce } from 'lodash'
+
 import searchCoins from '../api/searchCoins'
 import { ICoinBasicInfo } from '../compiler/interfaces'
 import standardizeErrorMessage from '../utilities/standardizeAndThrowError'
