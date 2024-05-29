@@ -7,7 +7,7 @@ import { CurrencyContext } from '../context/CurrencyContext'
 import { getFavorites } from '../utilities/handleFavorites'
 import standardizeErrorMessage from '../utilities/standardizeAndThrowError'
 
-export default function useFetchCoins({
+export default function useFetchCoinList({
   isFavoritesPage,
   criteria,
   searchParams,

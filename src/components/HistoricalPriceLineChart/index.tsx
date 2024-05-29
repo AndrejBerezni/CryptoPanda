@@ -35,7 +35,7 @@ export default function HistoricalPriceLineChart({
 
   const data = {
     labels: prices
-      .filter((_, index) => index % 5 === 0)
+      .filter((_, index) => index % 5 === 0) //displaying every day in last 90 would not look readable on chart, so I am displaying every 5th day
       .map((price) => new Date(price[0]).toLocaleDateString()),
     datasets: [
       {
@@ -50,6 +50,8 @@ export default function HistoricalPriceLineChart({
 
   const options = {
     responsive: true,
+    aspectRatio: 2,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top' as const,

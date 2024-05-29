@@ -36,13 +36,12 @@ export default function CoinCardInfoFields({
                 (coin[field as keyof ICoinDetailed] as number) < 0,
             })}
           >
-            {field === 'current_price'
+            {field !== 'price_change_percentage_24h'
               ? coin[field as keyof ICoinDetailed]?.toLocaleString('de-DE', {
                   style: 'currency',
                   currency,
                 })
-              : coin[field as keyof ICoinDetailed]?.toLocaleString('de-DE')}
-            {field === 'price_change_percentage_24h' && '%'}
+              : `${coin[field as keyof ICoinDetailed]?.toLocaleString('de-DE')}%`}
           </p>
         </div>
       ))}

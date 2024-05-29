@@ -1,18 +1,28 @@
+import CoinDetailsHeader from '../components/CoinDetailsHeader'
 import HistoricalPriceLineChart from '../components/HistoricalPriceLineChart'
 import Spinner from '../components/Spinner'
-import useFetchHistoricalData from '../hooks/useFetchHistoricalData'
+import useFetchCoinData from '../hooks/useFetchCoinData'
 
 export default function CoinDetailsPage() {
-  const { results, isLoading, error } = useFetchHistoricalData('bitcoin')
+  const { coin, results, isLoading, error } = useFetchCoinData('bitcoin')
 
-  let chartContent
+  let content
 
   if (isLoading) {
-    chartContent = <Spinner />
+    content = <Spinner />
   } else if (error) {
-    chartContent = <p>{error}</p>
+    content = <p className="text-center">{error}</p>
   } else {
-    chartContent = <HistoricalPriceLineChart prices={results} coin="Bitcoin" />
+    content = (
+      <div className="w-full h-[300px] md:h-[400px] lg:h-[500px]">
+        <HistoricalPriceLineChart prices={results} coin="Bitcoin" />
+      </div>
+    )
   }
-  return <section className="page-padding">{chartContent}</section>
+  return (
+    <section className="page-padding page-layout">
+      <CoinDetailsHeader coin={coin} />
+      {content}
+    </section>
+  )
 }

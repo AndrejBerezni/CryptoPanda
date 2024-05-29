@@ -8,7 +8,7 @@ import FavoritesEmptyMessage from '../components/FavoritesEmptyMessage'
 import Pagination from '../components/Pagination'
 import SearchCriteriaSelect from '../components/SearchCriteriaSelect'
 import { FavoritesContext } from '../context/FavoritesContext'
-import useFetchCoins from '../hooks/useFetchCoins'
+import useFetchCoinList from '../hooks/useFetchCoinList'
 
 export default function CoinListPage({
   isFavoritesPage,
@@ -17,7 +17,7 @@ export default function CoinListPage({
 }>) {
   const [criteria, setCriteria] = useState<CoinListCriteria>('market_cap')
   const [searchParams, setSearchParams] = useSearchParams()
-  const { coins, isLoading, error } = useFetchCoins({
+  const { coins, isLoading, error } = useFetchCoinList({
     isFavoritesPage,
     criteria,
     searchParams,
