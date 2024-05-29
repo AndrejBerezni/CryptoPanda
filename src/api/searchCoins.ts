@@ -14,6 +14,7 @@ const searchCoins = async (
         },
       }
     )
+
     if (response.status === 429) {
       throw new Error(
         'API calls per minute exceeded - please wait and try again later.'

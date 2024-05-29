@@ -13,7 +13,7 @@
 
 ## Overview
 
-Crypto Panda is cryptocurrency tracking application built with React and Typescript. It provides real-time data on cryptocurrencies using the free tier of Coingecko API.
+Crypto Panda is a cryptocurrency tracking application built with React and Typescript. It provides real-time data on cryptocurrencies using the free tier of Coingecko API.
 
 ## Stack
 
@@ -35,7 +35,7 @@ Crypto Panda is cryptocurrency tracking application built with React and Typescr
 - Change fiat currency - select whether you would like to view cryptocurrency prices in Euros, United States Dollars, British Pounds, or Russian Rubles.
 - Individual cryptocurrency pages with responsive line chart - every cryptocurrency card on Top Coins, Explore, or Favorites pages has a link to a page dedicated to that cryptocurrency where user can view historical price for the last 90 days, displayed in responsive line chart.
 - Color schemes - supports both light and dark themes, adjusted automatically based on the user's browser preference
-- Pagination - cryptocurrency lists have pagination, for easier navigation and list readability, displaying maximum 10 results per page
+- Pagination - cryptocurrency lists have pagination, for easier navigation and list readability, displaying maximum of 10 results per page
 
 ## Installation
 
@@ -77,3 +77,5 @@ VITE_COINGECKO_BASE_URL=https://api.coingecko.com/api/v3/
 
 ![Coin Page Desktop](/public/screenshots/coinpage-desktop-dark.jpeg)
 ![Coin Page Mobile](/public/screenshots/coinpage-mobile-light.jpeg)
+
+Thank you for taking the time to explore Crypto Panda! If you have any questions, suggestions, or feedback, please don't hesitate to contact me at [berezniandrej@gmailcom](mailto:berezniandrej@gmail.com) or connect with me on [LinkedIn](https://www.linkedin.com/in/andrej-berezni).

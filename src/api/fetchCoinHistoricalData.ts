@@ -18,7 +18,7 @@ const fetchCoinHistoricalData = async (
 
     if (response.status === 404) {
       throw new Error(
-        `Coin with id:${coinId} not found - try to search for coins on Explore page`
+        `Coin with id:${coinId} not found - try to search for coin on Explore page`
       )
     }
 

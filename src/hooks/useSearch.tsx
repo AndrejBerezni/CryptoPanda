@@ -31,8 +31,8 @@ export default function useSearch() {
       }
     }, 1000)
   )
-  //debouncedSearch needed to be dependency of the useEffect above, so I needed to wrap it in useCallback not to recreate on every render
-  // However, debounce returns a new debounced version of the provided function every time it is called
+  //debouncedSearch needed to be dependency of the useEffect above, so I needed to wrap it in useCallback not to be recreated on every render
+  // However, debounce returns a new debounced version of the provided function every time it is called, so instead I used useRef
 
   useEffect(() => {
     if (input.length > 1) {
