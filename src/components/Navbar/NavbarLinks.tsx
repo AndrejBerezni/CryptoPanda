@@ -29,7 +29,7 @@ export default function NavbarLinks() {
           to={link.url}
           key={`${link.text}-nav-link`}
           className={clsx('flex items-center gap-2 text-center', {
-            'primary-btn hover:bg-primary hover:text-backgroundColor dark:hover:text-backgroundColorDark hover:cursor-default':
+            'primary-btn hover:bg-primary hover:text-backgroundColor hover:cursor-default':
               location.pathname === link.url,
             'secondary-btn': location.pathname !== link.url,
           })}

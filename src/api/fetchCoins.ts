@@ -9,7 +9,6 @@ const fetchCoins = async (
   coins?: string
 ): Promise<ICoinDetailed[] | undefined> => {
   try {
-    console.log('fetching')
     const response = await fetch(
       `${import.meta.env.VITE_COINGECKO_BASE_URL}coins/markets?vs_currency=${currency}&order=${criteria}_desc&per_page=10&page=${page}&ids=${coins ? coins : ''}`,
       {

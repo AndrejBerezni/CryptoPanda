@@ -23,7 +23,7 @@ export default function SearchBar({
     <article className="relative">
       <input
         type="text"
-        className="shadow-md w-full rounded-md md:min-w-[400px] px-4 py-2 bg-white dark:bg-black"
+        className="shadow-md w-full rounded-md md:min-w-[400px] px-4 py-2 bg-white dark:bg-black border-secondary border-2  outline-none focus:border-primary focus:ring-none duration-200"
         placeholder="Search coins by name or symbol..."
         value={input}
         onChange={handleChange}
