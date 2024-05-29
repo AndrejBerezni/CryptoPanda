@@ -17,15 +17,14 @@ export default function CoinDetailsPage() {
     content = <p className="text-center">{error}</p>
   } else {
     content = (
-      <div className="w-full h-[300px] md:h-[400px] lg:h-[500px]">
-        <HistoricalPriceLineChart prices={results} coin="Bitcoin" />
-      </div>
+      <>
+        <div className="w-full h-[300px] md:h-[400px] lg:h-[500px]">
+          <HistoricalPriceLineChart prices={results} coin="Bitcoin" />
+          <CoinDetailsHeader coin={coin} />
+        </div>
+      </>
     )
   }
-  return (
-    <section className="page-padding page-layout">
-      <CoinDetailsHeader coin={coin} />
-      {content}
-    </section>
-  )
+
+  return <section className="page-padding page-layout">{content}</section>
 }

@@ -21,7 +21,6 @@ export default function useFetchCoinData(coinId: string) {
     const fetchCoinData = async () => {
       try {
         setError('')
-        setIsLoading(true)
         const newResults = await fetchCoinHistoricalData(coinId, currency)
         await delay(2000)
         const newCoin = await fetchCoins(currency, 'market_cap', 1, coinId)
@@ -41,7 +40,8 @@ export default function useFetchCoinData(coinId: string) {
     }
 
     const delayedFetch = async () => {
-      await delay(1000)
+      setIsLoading(true)
+      await delay(2000)
       fetchCoinData()
     }
 
