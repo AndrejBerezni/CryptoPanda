@@ -17,7 +17,7 @@ export default function Pagination({
   const numberOfPages = isFavoritesPage ? Math.ceil(favoritesLength / 10) : 5
   const pages = Array.from({ length: numberOfPages }, (_, index) => index)
 
-  if (!errorExists) {
+  if (!errorExists && numberOfPages > 1) {
     return (
       <ul className="flex gap-4 bg-white shadow-md dark:bg-black px-4 py-2 rounded-md">
         {pages.map((page) => (
