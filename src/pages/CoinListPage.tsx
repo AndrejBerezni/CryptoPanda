@@ -12,9 +12,9 @@ import useFetchCoins from '../hooks/useFetchCoins'
 
 export default function CoinListPage({
   isFavoritesPage,
-}: {
+}: Readonly<{
   isFavoritesPage: boolean
-}) {
+}>) {
   const [criteria, setCriteria] = useState<CoinListCriteria>('market_cap')
   const [searchParams, setSearchParams] = useSearchParams()
   const { coins, isLoading, error } = useFetchCoins({
@@ -40,7 +40,7 @@ export default function CoinListPage({
       />
       <Pagination
         setPage={(page) => setSearchParams({ page: page.toString() })}
-        currentPage={Number(searchParams.get('page')) ?? 1}
+        currentPage={Number(searchParams.get('page'))}
         isFavoritesPage={isFavoritesPage}
         favoritesLength={favorites.length}
         errorExists={!!error}

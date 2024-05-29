@@ -4,11 +4,11 @@ export default function PaginationButton({
   page,
   setPage,
   currentPage,
-}: {
+}: Readonly<{
   page: number
   setPage: (page: number) => void
   currentPage: number
-}) {
+}>) {
   return (
     <li>
       <button

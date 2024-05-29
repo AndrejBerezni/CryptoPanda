@@ -1,7 +1,9 @@
 import { ICoinBasicInfo } from '../../compiler/interfaces'
 import CoinCardButtons from '../CoinCard/CoinCardButtons'
 
-export default function SearchResult({ coin }: { coin: ICoinBasicInfo }) {
+export default function SearchResult({
+  coin,
+}: Readonly<{ coin: ICoinBasicInfo }>) {
   return (
     <li className="bg-white hover:cursor-default hover:-translate-y-1 duration-300 dark:bg-black rounded-md shadow-md p-4 w-full sm:w-[40%] lg:w-1/4 2xl:w-1/5 flex items-center justify-between">
       <div className="flex gap-2 items-center">

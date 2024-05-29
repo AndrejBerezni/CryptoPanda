@@ -8,12 +8,12 @@ export default function CoinList({
   isLoading,
   error,
   searchParams,
-}: {
+}: Readonly<{
   coins: ICoinDetailed[]
   isLoading: boolean
   error: string
   searchParams: URLSearchParams
-}) {
+}>) {
   let content
 
   if (isLoading) {

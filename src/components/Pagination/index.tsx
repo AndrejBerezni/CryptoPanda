@@ -6,13 +6,13 @@ export default function Pagination({
   isFavoritesPage,
   favoritesLength,
   errorExists,
-}: {
+}: Readonly<{
   setPage: (page: number) => void
   currentPage: number
   isFavoritesPage: boolean
   favoritesLength: number
   errorExists: boolean
-}) {
+}>) {
   // For Favorites page, we calculate number of pages. For top coins, it is always 5, for top 50 coins:
   const numberOfPages = isFavoritesPage ? Math.ceil(favoritesLength / 10) : 5
   const pages = Array.from({ length: numberOfPages }, (_, index) => index)

@@ -14,7 +14,9 @@ const CurrencyContext = createContext<ICurrencyContext>({
   }, // dummy function that will be overwritten by provider
 })
 
-function CurrencyContextProvider({ children }: { children: React.ReactNode }) {
+function CurrencyContextProvider({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   const [currency, setCurrency] = useState<Currency>('eur')
   const [currencyIndex, setCurrencyIndex] = useState<number>(0)
   const currencies: Currency[] = useMemo(() => ['eur', 'usd', 'gbp', 'rub'], [])

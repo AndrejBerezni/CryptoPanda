@@ -25,7 +25,9 @@ const FavoritesContext = createContext<IFavoritesContext>({
   }, // removeFavorite and addFavorite here are dummy functions that will be overwritten in provider below
 })
 
-function FavoritesContextProvider({ children }: { children: React.ReactNode }) {
+function FavoritesContextProvider({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   const [favorites, setFavorites] = useState<string[]>([])
 
   //on initial render, set up favorites according to favorites in localStorage

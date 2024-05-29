@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom'
 
 import { FavoritesContext } from '../../context/FavoritesContext'
 
-export default function CoinCardButtons({ coinId }: { coinId: string }) {
+export default function CoinCardButtons({
+  coinId,
+}: Readonly<{ coinId: string }>) {
   const { favorites, removeFavorite, addFavorite } =
     useContext(FavoritesContext)
   const [isFavorite, setIsFavorite] = useState<boolean>(

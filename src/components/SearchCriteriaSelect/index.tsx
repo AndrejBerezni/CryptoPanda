@@ -7,10 +7,10 @@ const criteriaList: CoinListCriteria[] = ['market_cap', 'volume']
 export default function SearchCriteriaSelect({
   criteria,
   setCriteria,
-}: {
+}: Readonly<{
   criteria: CoinListCriteria
   setCriteria: (criteria: CoinListCriteria) => void
-}) {
+}>) {
   return (
     <div className="bg-white dark:bg-black mt-4 rounded-md shadow-md text-xs md:text-sm flex flex-col items-center py-2 gap-2">
       <h3 className="font-bold text-textColorSecondary">order by</h3>

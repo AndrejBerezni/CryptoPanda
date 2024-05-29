@@ -11,7 +11,9 @@ const infoFields = [
   'total_volume',
   'price_change_percentage_24h',
 ]
-export default function CoinCardInfoFields({ coin }: { coin: ICoinDetailed }) {
+export default function CoinCardInfoFields({
+  coin,
+}: Readonly<{ coin: ICoinDetailed }>) {
   const { currency } = useContext(CurrencyContext)
 
   return (

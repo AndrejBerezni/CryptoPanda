@@ -6,11 +6,11 @@ export default function SearchBar({
   input,
   setInput,
   search,
-}: {
+}: Readonly<{
   input: string
   setInput: (searchInput: string) => void
   search: () => void
-}) {
+}>) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const searchInput = event.target.value
     setInput(searchInput)
