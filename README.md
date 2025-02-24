@@ -1,5 +1,5 @@
 # CRYPTO PANDA
-
+This project was created as part of a take-home assignment for a job application process at **Tech Wave Entertainment**. The task was completed within a **72-hour time limit**, following the provided requirements and guidelines.
 ![Top Coins Page Desktop](/public/screenshots/topcoinspage-desktop-dark.jpeg)
 
 ## Table of contents
